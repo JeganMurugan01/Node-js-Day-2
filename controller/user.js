@@ -33,4 +33,25 @@ const findUserdetails = (req, res) => {
   });
 };
 
-module.exports = { user, findUserdetails };
+const deletuser = ((req, res) => {
+  const { email } = req.body;
+  const find = `DELETE FROM users WHERE email='${email}'`;
+  dbcon.query(find, (err, result) => {
+    if (err) throw err;
+    if (result.affectedRows > 0) {
+      res.send("User deleted");
+    } else {
+      res.send("User not found");
+    }
+  })
+});
+
+const allusers=((req,res)=>{
+  const find =`SELECT name, email FROM users  `;
+  dbcon.query(find,(err,result)=>{
+    if(err) throw err;
+    res.send(result);
+  })
+})
+
+module.exports = { user, findUserdetails,deletuser,allusers};
