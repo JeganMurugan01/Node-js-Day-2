@@ -19,10 +19,9 @@ function user(req, res) {
     }
   });
 }
-
 const findUserdetails = (req, res) => {
-  const { email } = req.body;
-  const find = `SELECT * FROM users WHERE email='${email}'`;
+  const { email,name } = req.body;
+  const find = `SELECT * FROM users WHERE email='${email}' OR name='${name}'`;
   dbcon.query(find, (err, result) => {
     if (err) throw err;
     if (result.length > 0) {

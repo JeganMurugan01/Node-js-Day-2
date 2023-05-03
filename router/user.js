@@ -3,9 +3,9 @@ const userController = require('../controller/user.js');
 
 const router = express.Router();
 
-router.post('/', userController.user);
-router.get('/', userController.findUserdetails)
-router.delete('/', userController.deletuser);
+router.post('/adduser', userController.user);
+router.get('/userfind', userController.findUserdetails)
+router.delete('/deleteuser', userController.deletuser);
 router.get('/alluser',userController.allusers);
 
 
