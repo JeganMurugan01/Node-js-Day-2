@@ -1,10 +1,10 @@
 const dbcon = require("../config/dbconfig.js");
 
 function user(req, res) {
-  const { email } = req.body;
-  const { name, password } = req.body;
+  const { email, name, password} = req.body;
   const find = `SELECT * FROM users WHERE email='${email}'`;
   dbcon.query(find, (err, result) => {
+    console.log(result,"resultresult");
     if (err) throw err;
     if (result.length > 0) {
       res.send("Email is already in use");
